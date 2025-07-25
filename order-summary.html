@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="Order Summary - Richelle Style Wardrobe. Review your cart, submit your order, and get payment instructions.">
+  <meta name="theme-color" content="#fff6f0">
+  <link rel="icon" type="image/png" href="FAVICON.png">
+  <title>Order Summary | Richelle Style Wardrobe</title>
+  <style>
+    :root {
+      --main-bg: #fff6f0;
+      --accent: #44685B;
+      --secondary: #8B5B2B;
+      --text-dark: #222;
+      --text-light: #fff;
+      --section-bg: #fff;
+      --border-radius: 14px;
+      --shadow: 0 2px 14px rgba(68,104,91,0.09);
+      --max-width: 540px;
+      --input-bg: #f7f3ef;
+      --error: #c22;
+      --success: #2a864a;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--main-bg);
+      color: var(--text-dark);
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: flex-start;
+      background: var(--main-bg);
+    }
+
+    header {
+      width: 100%;
+      background: var(--section-bg);
+      box-shadow: var(--shadow);
+      padding: 0;
+      border-bottom: 2px solid #e5ded1;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: var(--max-width);
+      margin: auto;
+      padding: 0.7rem 1.2rem 0.7rem 1.2rem;
+    }
+
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .logo-box img {
+      height: 48px;
+      width: 48px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid #eee;
+    }
+    .brand-text {
+      font-family: "Georgia", serif;
+      font-size: 1.35rem;
+      font-weight: bold;
+      color: var(--accent);
+      letter-spacing: 1px;
+      line-height: 1.1;
+    }
+
+    main {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--main-bg);
+      padding: 2.2rem 1rem 1.2rem 1rem;
+    }
+
+    .summary-container {
+      background: var(--section-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 2rem 1.2rem;
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .summary-title {
+      font-family: "Georgia", serif;
+      font-size: 2rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin: 0 0 1.2em 0;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .cart-review {
+      width: 100%;
+      margin-bottom: 2em;
+    }
+
+    .cart-list {
+      width: 100%;
+      margin: 0 0 1.1em 0;
+      padding: 0;
+      list-style: none;
+      border-radius: 10px;
+      background: var(--input-bg);
+      border: 1px solid #ebddc7;
+      box-shadow: 0 1px 5px rgba(176,135,71,0.03);
+    }
+    .cart-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1em 1em;
+      border-bottom: 1px solid #f4eee4;
+      font-size: 1em;
+    }
+    .cart-list li:last-child {
+      border-bottom: none;
+    }
+    .cart-prod-name {
+      font-weight: bold;
+      color: var(--accent);
+      flex: 2 1 120px;
+    }
+    .cart-prod-qty {
+      color: #444;
+      margin: 0 0.6em;
+      flex: 1 0 28px;
+    }
+    .cart-prod-price {
+      color: var(--secondary);
+      font-weight: 500;
+      flex: 1 0 44px;
+      text-align: right;
+    }
+    .cart-prod-total {
+      color: var(--secondary);
+      font-weight: bold;
+      flex: 1 0 55px;
+      text-align: right;
+    }
+    .cart-total-row {
+      display: flex;
+      justify-content: flex-end;
+      font-weight: bold;
+      color: var(--secondary);
+      font-size: 1.06em;
+      margin-top: 1em;
+      margin-bottom: 0.5em;
+    }
+
+    /* Customer Info Form */
+    .customer-form {
+      width: 100%;
+      max-width: 100%;
+      margin-top: 1.7em;
+      margin-bottom: 1.7em;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2em;
+    }
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+    }
+    label {
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 0.2em;
+      font-size: 1em;
+    }
+    input, select, textarea {
+      font-size: 1em;
+      border-radius: 7px;
+      border: 1.3px solid #e6d7c5;
+      background: var(--input-bg);
+      padding: 0.7em 0.8em;
+      outline: none;
+      margin-bottom: 0.1em;
+      font-family: inherit;
+      color: var(--text-dark);
+      transition: border 0.11s;
+      box-sizing: border-box;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--accent);
+    }
+    textarea {
+      min-height: 47px;
+      resize: vertical;
+    }
+    .required {
+      color: #e88050;
+      font-weight: bold;
+      margin-left: 0.2em;
+    }
+    .error-msg {
+      color: var(--error);
+      font-size: 0.98em;
+      margin-top: 0.2em;
+      margin-bottom: 0.3em;
+    }
+    .success-msg {
+      color: var(--success);
+      font-size: 1.1em;
+      font-weight: bold;
+      margin-top: 0.5em;
+      margin-bottom: 1em;
+      text-align: center;
+    }
+
+    /* Checkout Button */
+    .checkout-btn {
+      background: var(--accent);
+      color: var(--text-light);
+      border: none;
+      border-radius: 8px;
+      font-size: 1.18em;
+      font-weight: 600;
+      padding: 0.75em 2em;
+      cursor: pointer;
+      transition: background 0.16s;
+      box-shadow: 0 2px 8px rgba(34,34,34,0.04);
+      margin-top: 1.2em;
+      margin-bottom: 0.7em;
+      width: 100%;
+      max-width: 280px;
+      align-self: center;
+    }
+    .checkout-btn:hover {
+      background: #2c453b;
+    }
+
+    .info-block {
+      background: #f8f3ea;
+      border-radius: 8px;
+      padding: 1.2em 1em;
+      color: #5b594f;
+      font-size: 1.02em;
+      margin: 1.2em 0 0.5em 0;
+      box-shadow: 0 1px 7px rgba(176,135,71,0.03);
+      border: 1px solid #f1e1c9;
+    }
+    .info-block strong {
+      color: var(--accent);
+    }
+
+    /* Confirmation Section */
+    .confirmation-block {
+      background: #f1f8f5;
+      border-radius: 10px;
+      padding: 2em 1.2em;
+      color: #295c45;
+      text-align: center;
+      font-size: 1.12em;
+      box-shadow: 0 2px 12px rgba(34,102,81,0.07);
+      margin-top: 1.2em;
+      margin-bottom: 1em;
+      border: 1px solid #d6e8e2;
+    }
+    .confirmation-block strong {
+      color: #24704b;
+      font-weight: bold;
+    }
+
+    /* Footer */
+    footer {
+      background: #3b544c;
+      color: #ffe1b6;
+      border-top: 2px solid #44685B;
+      box-shadow: 0 -2px 14px rgba(68,104,91,0.08);
+      font-size: 1em;
+      width: 100%;
+      margin-top: 2.2rem;
+      position: relative;
+    }
+    .footer-content {
+      max-width: var(--max-width);
+      margin: auto;
+      padding: 2em 1.2em 1em 1.2em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5em;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
+      margin-bottom: 0.5em;
+    }
+    .footer-logo img {
+      height: 33px;
+      width: 33px;
+      object-fit: contain;
+      border-radius: 7px;
+      background: #fff;
+      border: 1px solid #eee;
+    }
+    .footer-brand {
+      color: #fff6f0;
+      font-weight: bold;
+      font-family: "Georgia", serif;
+      font-size: 1.08em;
+      letter-spacing: 0.09em;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .footer-contact {
+      margin: 0.5em 0 0.5em 0;
+      color: #ffe1b6;
+      font-size: 1em;
+      text-align: center;
+      line-height: 1.7em;
+    }
+    .footer-contact a {
+      color: #ffe1b6;
+      text-decoration: underline;
+      transition: color 0.13s;
+    }
+    .footer-contact a:hover {
+      color: #fff;
+    }
+    .footer-links {
+      margin: 0.8em 0 0.8em 0;
+      display: flex;
+      gap: 1em;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 0.97em;
+    }
+    .footer-links a {
+      color: #ffe1b6;
+      text-decoration: underline;
+      transition: color 0.13s;
+      margin: 0 0.5em;
+    }
+    .footer-links a:hover {
+      color: #fff;
+    }
+    .footer-bottom {
+      width: 100%;
+      text-align: center;
+      font-size: 0.99em;
+      color: #ffe1b6;
+      padding: 1em 0 0.7em 0;
+      letter-spacing: 0.03em;
+    }
+    @media (max-width: 540px) {
+      main {
+        padding: 1.2rem 0.2rem 0.5rem 0.2rem;
+      }
+      .summary-container {
+        padding: 1.1rem 0.3rem;
+      }
+      .footer-content {
+        padding: 1.2em 0.2em 1em 0.2em;
+        gap: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo-box">
+        <img src="LOGO.png" alt="Richelle Style Wardrobe Logo">
+        <span class="brand-text">RICHELLE STYLE WARDROBE</span>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="summary-container">
+      <div class="summary-title">Order Summary</div>
+      <div class="info-block" id="info-block">
+        Please review your order below. After submitting, our team will personally reach out to confirm your product selections, colors, and availability. Your order isn’t final until you’ve confirmed these details with us.
+      </div>
+      <div class="cart-review" id="cart-review">
+        <ul class="cart-list" id="cart-list">
+          <!-- Cart items will be injected here by JS -->
+        </ul>
+        <div class="cart-total-row" id="cart-total-row">Total: ₱<span id="cart-total">0</span></div>
+      </div>
+      <form class="customer-form" id="customer-form" autocomplete="on">
+        <div class="form-row">
+          <label for="customer-name">Full Name<span class="required">*</span></label>
+          <input type="text" id="customer-name" name="customer-name" required autocomplete="name">
+          <div class="error-msg" id="error-name"></div>
+        </div>
+        <div class="form-row">
+          <label for="customer-phone">Mobile Number<span class="required">*</span></label>
+          <input type="tel" id="customer-phone" name="customer-phone" required autocomplete="tel" pattern="^09\d{9}$|^\+639\d{9}$">
+          <div class="error-msg" id="error-phone"></div>
+        </div>
+        <div class="form-row">
+          <label for="customer-address">Delivery Address<span class="required">*</span></label>
+          <textarea id="customer-address" name="customer-address" required autocomplete="street-address"></textarea>
+          <div class="error-msg" id="error-address"></div>
+        </div>
+        <div class="form-row">
+          <label for="payment-method">Preferred Payment Method<span class="required">*</span></label>
+          <select id="payment-method" name="payment-method" required>
+            <option value="">Select Payment Option</option>
+            <option value="GCash">GCash</option>
+            <option value="Bank Transfer">Bank Transfer (BDO)</option>
+            <option value="COD">Cash on Delivery (Cavite only)</option>
+          </select>
+          <div class="error-msg" id="error-payment"></div>
+        </div>
+        <div class="form-row">
+          <label for="customer-note">Order Notes <span style="color:#888;font-weight:400;font-size:0.96em;">(Optional)</span></label>
+          <textarea id="customer-note" name="customer-note" autocomplete="off" placeholder="Let us know your preferred color, size, or any special instructions."></textarea>
+        </div>
+        <button type="submit" class="checkout-btn" id="submit-order-btn">Submit Order</button>
+        <div class="success-msg" id="submit-success" style="display:none;"></div>
+      </form>
+      <div class="info-block" id="payment-info" style="display:none;">
+        <strong>Next Steps:</strong> Once you confirm your order details with our team, we'll send you a secure payment link based on your selected payment method.<br>
+        <br>
+        Please complete your payment within <strong>24 hours</strong> to ensure your order is processed. Orders will be automatically canceled if payment is not received within this window. Thank you for your understanding!
+      </div>
+      <div class="confirmation-block" id="confirmation-block" style="display:none;">
+        <strong>Order Submitted Successfully!</strong>
+        <br><br>
+        Thank you for placing your order with Richelle Style Wardrobe. One of our team members will reach out shortly to help finalize your order details, including colors, availability, and any custom preferences.
+        <br><br>
+        Please verify all details when contacted. After confirmation, you’ll receive a secure payment link for your chosen method. Kindly complete payment within <strong>24 hours</strong> to avoid automatic cancellation.
+        <br><br>
+        We appreciate your trust in us and look forward to assisting you!
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="LOGO.png" alt="Richelle Style Wardrobe Footer Logo">
+        <span class="footer-brand">RICHELLE STYLE WARDROBE</span>
+      </div>
+      <div class="footer-contact">
+        #11 Sampaguita Street, Brgy. San Roque, Imus, Cavite, 4102<br>
+        <a href="mailto:contact@richellestylewardrobe.com">contact@richellestylewardrobe.com</a> |
+        <a href="tel:+639182017455">+63 918 201 7455</a>
+      </div>
+      <div class="footer-links">
+        <a href="#policies">Privacy Policy</a>
+        <a href="#policies">Terms</a>
+        <a href="#policies">Return Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Richelle Style Wardrobe. All Rights Reserved.
+    </div>
+  </footer>
+  <script>
+    // Demo cart data for illustration (replace with actual cart logic)
+    let cart = [
+      {name: "Blouses & Crop Tops", price: 299, qty: 2},
+      {name: "Dresses (Casual & Maxi)", price: 499, qty: 1},
+      {name: "Denim Jeans & Jeggings", price: 399, qty: 1}
+    ];
+
+    // Renders cart items on the summary page
+    function renderCart() {
+      const cartList = document.getElementById('cart-list');
+      const cartTotalRow = document.getElementById('cart-total-row');
+      let total = 0;
+      cartList.innerHTML = "";
+      if (cart.length === 0) {
+        cartList.innerHTML = '<li style="text-align:center;color:#888;font-style:italic;padding:1.2em;">Your cart is empty.</li>';
+        cartTotalRow.innerHTML = '';
+        return;
+      }
+      cart.forEach(item => {
+        const lineTotal = item.price * item.qty;
+        total += lineTotal;
+        const li = document.createElement('li');
+        li.innerHTML =
+          `<span class="cart-prod-name">${item.name}</span>
+           <span class="cart-prod-qty">x${item.qty}</span>
+           <span class="cart-prod-price">₱${item.price}</span>
+           <span class="cart-prod-total">₱${lineTotal}</span>`;
+        cartList.appendChild(li);
+      });
+      cartTotalRow.innerHTML = `Total: ₱<span id="cart-total">${total}</span>`;
+    }
+    renderCart();
+
+    // Form Validation
+    function validateForm() {
+      let valid = true;
+      // Name validation
+      const name = document.getElementById('customer-name').value.trim();
+      if (!name) {
+        document.getElementById('error-name').textContent = "Please enter your full name.";
+        valid = false;
+      } else {
+        document.getElementById('error-name').textContent = "";
+      }
+      // Phone validation
+      const phone = document.getElementById('customer-phone').value.trim();
+      const phonePattern = /^09\d{9}$|^\+639\d{9}$/;
+      if (!phone) {
+        document.getElementById('error-phone').textContent = "Please enter your mobile number.";
+        valid = false;
+      } else if (!phonePattern.test(phone)) {
+        document.getElementById('error-phone').textContent = "Enter a valid PH mobile number (e.g. 09XXXXXXXXX or +639XXXXXXXXX).";
+        valid = false;
+      } else {
+        document.getElementById('error-phone').textContent = "";
+      }
+      // Address
+      const address = document.getElementById('customer-address').value.trim();
+      if (!address) {
+        document.getElementById('error-address').textContent = "Delivery address is required.";
+        valid = false;
+      } else {
+        document.getElementById('error-address').textContent = "";
+      }
+      // Payment
+      const payment = document.getElementById('payment-method').value;
+      if (!payment) {
+        document.getElementById('error-payment').textContent = "Please select a payment method.";
+        valid = false;
+      } else {
+        document.getElementById('error-payment').textContent = "";
+      }
+      return valid;
+    }
+
+    // Handle form submission
+    document.getElementById('customer-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      if (!validateForm()) return;
+
+      // Hide form and show confirmation
+      document.getElementById('customer-form').style.display = "none";
+      document.getElementById('info-block').style.display = "none";
+      document.getElementById('payment-info').style.display = "";
+      document.getElementById('confirmation-block').style.display = "";
+
+      // Display success message
+      document.getElementById('submit-success').style.display = "none";
+    });
+  </script>
+</body>
+</html>
