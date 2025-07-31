@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta name="description" content="Richelle Style Wardrobe - Fashion boutique in Imus, Cavite. Shop modern Filipina clothing, shoes, bags, and accessories.">
   <meta name="theme-color" content="#fff6f0">
-  <link rel="icon" type="image/png" href="LOGO.png">
+  <link rel="icon" type="image/png" href="image/LOGO.png">
   <title>Richelle Style Wardrobe</title>
   <style>
     :root {
@@ -27,7 +27,6 @@
       --footer-social-hover: #fff6f0;
       --footer-social-color: #fff;
     }
-
     html, body {
       margin: 0;
       padding: 0;
@@ -38,13 +37,11 @@
       line-height: 1.6;
       min-height: 100vh;
     }
-
     body {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
-
     header {
       background: var(--section-bg);
       box-shadow: var(--shadow);
@@ -54,7 +51,6 @@
       top: 0;
       z-index: 100;
     }
-
     .navbar {
       display: flex;
       align-items: center;
@@ -64,13 +60,11 @@
       padding: 0.5rem 1rem 0.5rem 1rem;
       position: relative;
     }
-
     .logo-box {
       display: flex;
       align-items: center;
       gap: 1rem;
     }
-
     .logo-box img {
       height: 64px;
       width: 64px;
@@ -79,7 +73,6 @@
       background: #fff;
       border: 1px solid #eee;
     }
-
     .brand-text {
       font-family: "Georgia", serif;
       font-size: 1.5rem;
@@ -88,14 +81,12 @@
       letter-spacing: 1px;
       line-height: 1.1;
     }
-
     nav {
       display: flex;
       gap: 1.2rem;
       align-items: center;
       transition: max-height 0.25s ease;
     }
-
     nav a {
       text-decoration: none;
       color: var(--text-dark);
@@ -104,13 +95,10 @@
       border-radius: 6px;
       transition: background 0.15s, color 0.15s;
     }
-
     nav a:hover, nav a.active {
       background: var(--accent);
       color: var(--text-light);
     }
-
-    /* Cart Button Floating */
     .cart-btn-fixed {
       position: fixed;
       bottom: 32px;
@@ -144,8 +132,6 @@
       margin-left: 0.2em;
       border: 1px solid #eee;
     }
-
-    /* Burger Styles */
     .burger {
       display: none;
       flex-direction: column;
@@ -178,8 +164,6 @@
       transform: rotate(-45deg) translate(6px, -6px);
       background: var(--secondary);
     }
-
-    /* Responsive Design */
     @media (max-width: 900px) {
       .hero {
         flex-direction: column;
@@ -286,7 +270,6 @@
       .testimonial-card span {
         text-align: center !important;
       }
-      /* Footer mobile style */
       footer {
         padding: 2.3em 0.3em 1.1em 0.3em !important;
       }
@@ -306,7 +289,6 @@
         width: 32px !important;
       }
     }
-
     main {
       flex: 1;
       width: 100%;
@@ -315,8 +297,6 @@
       padding: 2.5rem 1rem 1.5rem 1rem;
       box-sizing: border-box;
     }
-
-    /* Hero Section */
     .hero {
       display: flex;
       flex-wrap: wrap;
@@ -329,7 +309,6 @@
       margin-bottom: 2.6rem;
       margin-top: 0.7rem;
     }
-
     .hero-img {
       flex: 1 1 260px;
       min-width: 200px;
@@ -347,7 +326,6 @@
       box-shadow: 0 3px 16px 0 rgba(100,90,60,0.03);
       max-width: 330px;
     }
-
     .hero-content {
       flex: 2 1 340px;
       min-width: 220px;
@@ -355,7 +333,6 @@
       flex-direction: column;
       gap: 1.3rem;
     }
-
     .hero-content h1 {
       font-family: "Georgia", serif;
       font-size: 2.4rem;
@@ -369,7 +346,6 @@
       color: #413d3b;
       margin: 0 0 0.7em 0;
     }
-
     .hero-content .cta-btn {
       background: var(--accent);
       color: var(--text-light);
@@ -383,12 +359,9 @@
       width: fit-content;
       box-shadow: 0 2px 8px rgba(34,34,34,0.04);
     }
-
     .hero-content .cta-btn:hover {
       background: #2c453b;
     }
-
-    /* Sections */
     section {
       margin-bottom: 2.7rem;
       padding: 2.2rem 1.3rem 2.2rem 1.3rem;
@@ -412,8 +385,6 @@
     section li {
       margin-bottom: 0.3em;
     }
-
-    /* Products (grid) */
     .product-list {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -487,7 +458,6 @@
     .add-cart-btn:hover {
       background: #37594e;
     }
-
     @media (max-width: 950px) {
       .product-list {
         grid-template-columns: repeat(2, 1fr);
@@ -501,8 +471,6 @@
         min-height: 0;
       }
     }
-
-    /* About Section */
     .about-content {
       display: flex;
       flex-wrap: wrap;
@@ -527,8 +495,6 @@
       background: #f6f6f6;
       border: 1px solid #e1e1e1;
     }
-
-    /* Testimonials - Vertical List and Centered Style */
     .testimonials-list {
       display: flex;
       flex-direction: column;
@@ -570,8 +536,6 @@
       font-size: 1em;
       text-align: center;
     }
-
-    /* FAQ */
     .faq-list {
       margin: 0;
       padding: 0;
@@ -589,8 +553,6 @@
       margin-left: 0.5em;
       color: #3d3d3d;
     }
-
-    /* Contact */
     .contact-details {
       display: flex;
       flex-wrap: wrap;
@@ -619,14 +581,10 @@
     .contact-social a:hover {
       color: var(--secondary);
     }
-
-    /* Delivery & Payment */
     .delpay-list {
       margin: 0.5em 0 0 0;
       padding-left: 1.2em;
     }
-
-    /* Cart Summary Panel */
     .cart-summary-panel {
       position: fixed;
       right: 0;
@@ -759,8 +717,6 @@
         right: 12px;
       }
     }
-
-    /* Cart Overlay */
     #cart-overlay {
       display: none;
       position: fixed;
@@ -826,8 +782,6 @@
     .checkout-btn:hover {
       background: #6d3c11;
     }
-
-    /* Policies */
     .policy-list {
       display: flex;
       flex-wrap: wrap;
@@ -855,8 +809,6 @@
       color: #4d4d4d;
       font-size: 0.98em;
     }
-
-    /* Footer - New Modern Style */
     footer {
       background: var(--footer-bg);
       color: var(--footer-accent);
@@ -1032,7 +984,7 @@
   <header>
     <div class="navbar">
       <div class="logo-box">
-        <img src="LOGO.png" alt="Richelle Style Wardrobe Logo">
+        <img src="image/LOGO.png" alt="Richelle Style Wardrobe Logo">
         <span class="brand-text">RICHELLE<br><span style="font-size:0.95em;letter-spacing:0.04em;font-weight:400;">STYLE WARDROBE</span></span>
       </div>
       <button class="burger" id="burger" aria-label="Toggle menu">
@@ -1055,7 +1007,7 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
       <div class="hero-img">
-        <img src="LOGO.png" alt="Richelle Style Wardrobe Logo Hero">
+        <img src="image/LOGO.png" alt="Richelle Style Wardrobe Logo Hero">
       </div>
       <div class="hero-content">
         <h1>Step Into Confidence — Discover Your Style at Richelle Style Wardrobe!</h1>
@@ -1069,37 +1021,37 @@
       <h2>Explore Our Fashion Collections</h2>
       <ul class="product-list">
         <li class="product-card">
-          <img src="Pictures1.png" alt="Blouses & Crop Tops">
+          <img src="image/Pictures1.png" alt="Blouses & Crop Tops">
           <div class="product-title">Blouses & Crop Tops</div>
           <div class="product-price">₱299</div>
           <button class="add-cart-btn" data-name="Blouses & Crop Tops" data-price="299">Add to Cart</button>
         </li>
         <li class="product-card">
-          <img src="Pictures2.png" alt="Dresses (Casual & Maxi)">
+          <img src="image/Pictures2.png" alt="Dresses (Casual & Maxi)">
           <div class="product-title">Dresses (Casual & Maxi)</div>
           <div class="product-price">₱499</div>
           <button class="add-cart-btn" data-name="Dresses (Casual & Maxi)" data-price="499">Add to Cart</button>
         </li>
         <li class="product-card">
-          <img src="Pictures3.png" alt="Denim Jeans & Jeggings">
+          <img src="image/Pictures3.png" alt="Denim Jeans & Jeggings">
           <div class="product-title">Denim Jeans & Jeggings</div>
           <div class="product-price">₱399</div>
           <button class="add-cart-btn" data-name="Denim Jeans & Jeggings" data-price="399">Add to Cart</button>
         </li>
         <li class="product-card">
-          <img src="Pictures4.png" alt="Loungewear Sets">
+          <img src="image/Pictures4.png" alt="Loungewear Sets">
           <div class="product-title">Loungewear Sets</div>
           <div class="product-price">₱350</div>
           <button class="add-cart-btn" data-name="Loungewear Sets" data-price="350">Add to Cart</button>
         </li>
         <li class="product-card">
-          <img src="Pictures5.png" alt="Sandals & Flats">
+          <img src="image/Pictures5.png" alt="Sandals & Flats">
           <div class="product-title">Sandals & Flats</div>
           <div class="product-price">₱250</div>
           <button class="add-cart-btn" data-name="Sandals & Flats" data-price="250">Add to Cart</button>
         </li>
         <li class="product-card">
-          <img src="Pictures6.png" alt="Handbags & Totes">
+          <img src="image/Pictures6.png" alt="Handbags & Totes">
           <div class="product-title">Handbags & Totes</div>
           <div class="product-price">₱390</div>
           <button class="add-cart-btn" data-name="Handbags & Totes" data-price="390">Add to Cart</button>
@@ -1122,7 +1074,7 @@
           <p>Support local, wear local, love local.</p>
         </div>
         <div class="about-img">
-          <img src="LOGO.png" alt="About Richelle Logo">
+          <img src="image/LOGO.png" alt="About Richelle Logo">
         </div>
       </div>
     </section>
@@ -1255,7 +1207,7 @@
     <div class="footer-content">
       <div class="footer-section">
         <div class="footer-logo">
-          <img src="LOGO.png" alt="Richelle Style Wardrobe Footer Logo">
+          <img src="image/LOGO.png" alt="Richelle Style Wardrobe Footer Logo">
           <span class="footer-brand">RICHELLE STYLE WARDROBE</span>
         </div>
         <div class="footer-desc">
@@ -1345,9 +1297,7 @@
     const cartSummary = document.getElementById('cart-summary');
     const cartTotalSpan = document.getElementById('cart-total');
     const checkoutBtn = document.getElementById('cart-checkout');
-
     let cart = [];
-
     function updateCartDisplay() {
       cartItemsDiv.innerHTML = '';
       if (cart.length === 0) {
@@ -1378,7 +1328,6 @@
       cartCountSpan.textContent = cart.reduce((a, b) => a + b.qty, 0);
       updateCartSummaryPanel();
     }
-
     function addToCart(name, price) {
       const itemIdx = cart.findIndex(item => item.name === name);
       if (itemIdx > -1) {
@@ -1388,12 +1337,10 @@
       }
       updateCartDisplay();
     }
-
     window.removeFromCart = function(idx) {
       cart.splice(idx, 1);
       updateCartDisplay();
     };
-
     addCartBtns.forEach(btn => {
       btn.addEventListener('click', e => {
         const name = btn.getAttribute('data-name');
@@ -1402,7 +1349,6 @@
         showCartSummaryPanel();
       });
     });
-
     cartBtn.addEventListener('click', () => {
       cartOverlay.classList.add('active');
       updateCartDisplay();
@@ -1422,7 +1368,6 @@
     const cartSummaryList = document.getElementById('cart-summary-list');
     const cartSummaryTotal = document.getElementById('cart-summary-total');
     const cartSummaryClose = document.getElementById('cart-summary-close');
-
     function showCartSummaryPanel() {
       cartSummaryPanel.classList.add('visible');
     }
@@ -1431,7 +1376,6 @@
     }
     cartSummaryClose.addEventListener('click', hideCartSummaryPanel);
     cartBtn.addEventListener('click', showCartSummaryPanel);
-
     function updateCartSummaryPanel() {
       cartSummaryList.innerHTML = '';
       if (cart.length === 0) {
@@ -1457,7 +1401,6 @@
       cartSummaryTotal.textContent = 'Total: ₱' + total;
     }
     updateCartSummaryPanel();
-
     document.addEventListener('click', function(e){
       if (
         cartSummaryPanel.classList.contains('visible') &&
